@@ -1,0 +1,52 @@
+import tkinter,random
+
+screen=tkinter.Tk()
+screen.geometry("1000x600")
+
+screen.title("Rock-Paper-Scissors")
+screen.configure(background="white")
+
+optionlist=["rock","paper","scissors"]
+score=0
+cscore=0
+
+def player_choice(choice):
+    cc=random.choice(optionlist)
+    selection.configure(text="You selected:"+choice)
+    cselection.configure(text="Computer selected:"+cc)
+    
+    
+rock=tkinter.Button(screen,background="pink",fg="black",text="Rock",font=("times new roman",35),command=lambda:player_choice(optionlist[0]))
+rock.place(x=450,y=250)
+
+paper=tkinter.Button(screen,background="light blue",fg="black",text="Paper",font=("times new roman",35))
+paper.place(x=650,y=250)
+
+scissors=tkinter.Button(screen,background="grey",fg="black",text="Scissors",font=("times new roman",35))
+scissors.place(x=850,y=250)
+
+options=tkinter.Label(screen,background="white",fg="black",text="Your options:",font=("times new roman",35))
+options.place(x=225,y=200)
+
+scorebox=tkinter.Label(screen,background="white",fg="black",text="Score:",font=("times new roman",35))
+scorebox.place(x=225,y=300)
+
+title=tkinter.Label(screen,background="white",fg="black",text="Rock Paper Scissors",font=("times new roman",35))
+title.place(x=350,y=50)
+
+selection=tkinter.Label(screen,background="white",fg="black",text="You selected:",font=("times new roman",35))
+selection.place(x=150,y=400)
+
+player_score=tkinter.Label(screen,background="white",fg="black",text="Player score:",font=("times new roman",35))
+player_score.place(x=600,y=400)
+
+cselection=tkinter.Label(screen,background="white",fg="black",text="Computer selected:",font=("times new roman",35))
+cselection.place(x=150,y=500)
+
+computer_score=tkinter.Label(screen,background="white",fg="black",text="Computer score:",font=("times new roman",35))
+computer_score.place(x=600,y=500)
+
+winner=tkinter.Label(screen,background="white",fg="green",text=" wins!",font=("times new roman",35))
+winner.place(x=400,y=100)
+
+screen.mainloop()
