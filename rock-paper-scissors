@@ -11,18 +11,41 @@ score=0
 cscore=0
 
 def player_choice(choice):
+    global score, cscore
     cc=random.choice(optionlist)
     selection.configure(text="You selected:"+choice)
     cselection.configure(text="Computer selected:"+cc)
-    
+    if (choice=="rock" and cc=="scissors"):
+        score+=1
+        winner.configure(text="Player wins!")
+    if (choice=="scissors" and cc=="paper"):
+        score+=1
+        winner.configure(text="Player wins!")
+    if (choice=="paper" and cc=="rock"):
+        score+=1
+        winner.configure(text="Player wins!")
+    if (cc=="rock" and choice=="scissors"):
+        cscore+=1
+        winner.configure(text="Computer wins!")
+    if (cc=="scissors" and choice=="paper"):
+        cscore+=1
+        winner.configure(text="Computer wins!")
+    if (cc=="paper" and choice=="rock"):
+        cscore+=1
+        winner.configure(text="Computer wins!")
+    else:
+      pass
+    computer_score.configure(text="Computer score"+str(cscore))
+    player_score.configure(text="Player score"+str(score))
+
     
 rock=tkinter.Button(screen,background="pink",fg="black",text="Rock",font=("times new roman",35),command=lambda:player_choice(optionlist[0]))
 rock.place(x=450,y=250)
 
-paper=tkinter.Button(screen,background="light blue",fg="black",text="Paper",font=("times new roman",35))
+paper=tkinter.Button(screen,background="light blue",fg="black",text="Paper",font=("times new roman",35),command=lambda:player_choice(optionlist[1]))
 paper.place(x=650,y=250)
 
-scissors=tkinter.Button(screen,background="grey",fg="black",text="Scissors",font=("times new roman",35))
+scissors=tkinter.Button(screen,background="grey",fg="black",text="Scissors",font=("times new roman",35),command=lambda:player_choice(optionlist[2]))
 scissors.place(x=850,y=250)
 
 options=tkinter.Label(screen,background="white",fg="black",text="Your options:",font=("times new roman",35))
@@ -46,7 +69,8 @@ cselection.place(x=150,y=500)
 computer_score=tkinter.Label(screen,background="white",fg="black",text="Computer score:",font=("times new roman",35))
 computer_score.place(x=600,y=500)
 
-winner=tkinter.Label(screen,background="white",fg="green",text=" wins!",font=("times new roman",35))
+winner=tkinter.Label(screen,background="white",fg="green",text="",font=("times new roman",35))
 winner.place(x=400,y=100)
+
 
 screen.mainloop()
